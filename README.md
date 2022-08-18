@@ -1,6 +1,8 @@
+ I created my own nodejs server for my future small project
+ 
  Web API
-    - [ ] it should have an endpoint for storing heroes' data
-    - [ ] it should have an endpoint for retrieving heroes' data
+    - [x] it should have an endpoint for storing heroes' data
+    - [x] it should have an endpoint for retrieving heroes' data
     - [ ] it should have an endpoint for updating heroes' data
     - [ ] it should have an endpoint for deleting heroes' data
     - [ ] it should test when the application throws an error
