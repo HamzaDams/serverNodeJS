@@ -1,13 +1,31 @@
-import path from 'node:path'
-import { parse } from 'node:url'
+import {
+    join,
+    dirname
+} from 'node:path'
+
+import { parse, fileURLToPath } from 'node:url'
+import { generateInstance } from './factories/heroFactory.js'
+import { routes } from './routes/heroRoute.js'
 import { DEFAULT_HEADER } from './utils/utils.js'
 
+const currentDir = dirname(
+    fileURLToPath(
+        import.meta.url
+    )
+)
+
+const filePath = join(currentDir, './database', 'data.json')
+
+const heroService = generateInstance({
+    filePath
+})
+
+const heroRoutes = routes({
+    heroService
+})
 
 const allRoutes = {
-    '/heroes:get': async (req, res) => {
-        res.write('GET')
-        res.end()
-    },
+    ...heroRoutes,
     //404 Routes
     default: (req, res) => {
         res.writeHead(404, DEFAULT_HEADER)
